@@ -22,12 +22,12 @@ export function PosterCard({
   square,
 }: {
   title: string;
-  poster?: string;
-  subtitle?: string;
-  rating?: string | number;
-  badge?: string;
-  progress?: number;
-  square?: boolean;
+  poster?: string | undefined;
+  subtitle?: string | undefined;
+  rating?: string | number | undefined;
+  badge?: string | undefined;
+  progress?: number | undefined;
+  square?: boolean | undefined;
 }) {
   return (
     <div className="group w-full">
@@ -72,7 +72,7 @@ export function PosterCard({
   );
 }
 
-export function SectionHeader({ title, action }: { title: string; action?: ReactNode }) {
+export function SectionHeader({ title, action }: { title: string; action?: ReactNode | undefined }) {
   return (
     <div className="mb-3 flex items-center justify-between gap-4">
       <h2 className="text-xl font-bold md:text-2xl">{title}</h2>
@@ -89,7 +89,7 @@ export function Row({ children }: { children: ReactNode }) {
   );
 }
 
-export function ShimmerGrid({ count = 12, square }: { count?: number; square?: boolean }) {
+export function ShimmerGrid({ count = 12, square }: { count?: number | undefined; square?: boolean | undefined }) {
   return (
     <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
       {Array.from({ length: count }).map((_, i) => (
@@ -102,7 +102,7 @@ export function ShimmerGrid({ count = 12, square }: { count?: number; square?: b
   );
 }
 
-export function EmptyState({ title, hint }: { title: string; hint?: string }) {
+export function EmptyState({ title, hint }: { title: string; hint?: string | undefined }) {
   return (
     <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border py-16 text-center">
       <Inbox className="mb-3 size-10 text-muted-foreground" />
@@ -112,7 +112,7 @@ export function EmptyState({ title, hint }: { title: string; hint?: string }) {
   );
 }
 
-export function ErrorState({ message, onRetry }: { message?: string; onRetry?: () => void }) {
+export function ErrorState({ message, onRetry }: { message?: string | undefined; onRetry?: (() => void) | undefined }) {
   return (
     <div className="flex flex-col items-center justify-center rounded-2xl border border-destructive/40 bg-destructive/10 py-14 text-center">
       <WifiOff className="mb-3 size-10 text-destructive" />
