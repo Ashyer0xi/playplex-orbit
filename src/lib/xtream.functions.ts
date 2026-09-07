@@ -29,11 +29,13 @@ async function call(creds: Creds, params: Record<string, string>) {
 
 type Input = { creds: Creds; params: Record<string, string> };
 
+export type Json = string | number | boolean | null | Json[] | { [k: string]: Json };
+
 /** Generic Xtream Codes proxy — keeps credentials off cross-origin browser requests. */
 export const xtreamCall = createServerFn({ method: "POST" })
   .inputValidator((d: Input) => d)
   .handler(async ({ data }) => {
-    return (await call(data.creds, data.params)) as Record<string, unknown> | unknown[];
+    return (await call(data.creds, data.params)) as Json;
   });
 
 
