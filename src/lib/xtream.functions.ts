@@ -33,8 +33,9 @@ type Input = { creds: Creds; params: Record<string, string> };
 export const xtreamCall = createServerFn({ method: "POST" })
   .inputValidator((d: Input) => d)
   .handler(async ({ data }) => {
-    return (await call(data.creds, data.params)) as unknown;
+    return (await call(data.creds, data.params)) as Record<string, unknown> | unknown[];
   });
+
 
 export const xtreamLogin = createServerFn({ method: "POST" })
   .inputValidator((d: { creds: Creds }) => d)
