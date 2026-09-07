@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Star, ImageOff, Inbox, WifiOff, RotateCw } from "lucide-react";
 
-export function RatingBadge({ rating }: { rating?: string | number }) {
+export function RatingBadge({ rating }: { rating?: string | number | undefined }) {
   const value = Number(rating);
   if (!rating || Number.isNaN(value) || value <= 0) return null;
   return (
