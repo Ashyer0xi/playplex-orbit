@@ -12,7 +12,7 @@ import {
 } from "@/lib/xtream-client";
 
 export const Route = createFileRoute("/search")({
-  validateSearch: (s: Record<string, unknown>) => ({ q: typeof s.q === "string" ? s.q : "" }),
+  validateSearch: (s: Record<string, unknown>) => ({ q: typeof s["q"] === "string" ? (s["q"] as string) : "" }),
   head: () => ({
     meta: [
       { title: "البحث — IPTV سمارت" },
